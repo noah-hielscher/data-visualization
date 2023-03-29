@@ -1,33 +1,55 @@
-let countryData;
+/*
+franklin hernandez-castro
+www.skizata.com
+TEC costa rica, hfg schw. gmuend
+2022
+*/
 
-function preload() {
-	countryData = loadTable("data/trust.csv", "csv", "header");
+let countryData;
+let myCountries = [];
+
+function preload(){
+    countryData = loadTable('data/countries&areas.csv', 'csv', 'header');
 }
 
 function setup() {
-	createCanvas(400, 400);
-	let i = 0;
+    createCanvas(1400, 800);
+    let i=0;
 
-	for (let myRow of countryData.rows) {
-		console.log(
-			i +
-				"Countries: " +
-				myRow.get("Countries") +
-				"   Year: " +
-				myRow.get("Periods") +
-				"   trust in Police (score): " +
-				myRow.get("Evaluation of trust in/Police (score)") +
-				"   trust in Police (%): " +
-				myRow.get("Percentage of people with trust in/Police (%)")
-		);
-		i++;
-	}
+    for (let myRow of countryData.rows){
+        let currentCountry = new Country();
+
+        currentCountry.myCountryArea = myRow.get('sqr_Km');
+        if (currentCountry.myCountryArea>10000){
+            currentCountry.myCountry = myRow.get('Country_Name');
+            currentCountry.myCountryISO = myRow.get('ISO_A3');
+            currentCountry.mySize = map( currentCountry.myCountryArea, 17098250,50,  700,5) ; // [17098250,50]
+
+            if ( currentCountry.myCountryISO === "DEU" || currentCountry.myCountryISO === "CRI")
+                currentCountry.myColor = color(200,100,100);
+
+            myCountries [i] = currentCountry;
+            i++;
+        }
+    }
 }
 
 function draw() {
-	background(51);
+    background(51);
 
-	//Framrate
-	fill(200);
-	text("frameRate:   " + Math.round(frameRate()), 20, width - 20);
+    let currentX = 10;
+    let currentY = 750;
+
+    for (let i = 0; i < myCountries.length; i++) {
+        myCountries [i].display (currentX, currentY);
+        currentX += myCountries[i].myWidth+2;
+    }
+
+    fill (200);
+    textSize(18);
+    text ("countries by area", 10, 30);
+    textSize(12);
+    text("frameRate:   " + Math.round(frameRate()), 10, height-5);
+
+    //noLoop();
 }
