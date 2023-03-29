@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b23c1e2f-1039-4eba-b1ce-213184fd88a2" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1QqZO1KqdPAePUtXgjihTaI52Mz" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="day1_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="day1_1" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b23c1e2f-1039-4eba-b1ce-213184fd88a2" name="Default" comment="" />
+      <created>1552931095186</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1552931095186</updated>
+      <workItem from="1552931096841" duration="625000" />
+      <workItem from="1567980789035" duration="4933000" />
+      <workItem from="1567995408687" duration="872000" />
+      <workItem from="1568082638744" duration="1386000" />
+      <workItem from="1568499761771" duration="180000" />
+      <workItem from="1568500059970" duration="1146000" />
+      <workItem from="1568578425396" duration="755000" />
+      <workItem from="1569358313329" duration="229000" />
+      <workItem from="1569402083394" duration="727000" />
+      <workItem from="1569418908761" duration="501000" />
+      <workItem from="1569768217941" duration="691000" />
+      <workItem from="1572574655197" duration="463000" />
+      <workItem from="1572796933142" duration="578000" />
+      <workItem from="1661105357298" duration="1002000" />
+      <workItem from="1661891601329" duration="263000" />
+      <workItem from="1661894162389" duration="149000" />
+      <workItem from="1661894355147" duration="76000" />
+      <workItem from="1661894769607" duration="8000" />
+      <workItem from="1663748741316" duration="769000" />
+      <workItem from="1663762423571" duration="625000" />
+      <workItem from="1678826745990" duration="48000" />
+      <workItem from="1678872222564" duration="135000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
