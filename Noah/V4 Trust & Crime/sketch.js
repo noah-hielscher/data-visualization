@@ -2,6 +2,12 @@
 Marsha, Noah, Lukas
 */
 
+//For-Schleife meiste Vorfälle
+let valueMax = 0;
+
+//For-Schleife meiste Vorfälle
+let trustMax = 0;
+
 //Datenbank Crime
 let crimeData;
 let myCrime = [];
@@ -37,13 +43,18 @@ function setup() {
 			currentCountry.myYear = myRow.get("Year");
 			currentCountry.myValue = myRow.get("VALUE");
 
+			//For-Schleife meiste Vorfälle
+			for (let v = 0; valueMax < currentCountry.myValue; v++) {
+				valueMax = valueMax + 1;
+			}
+
 			//Map
-			currentCountry.mySize = map(
-				currentCountry.myCountryArea,
-				17098250,
-				50,
-				700,
-				5
+			currentCountry.myPosition = map(
+				currentCountry.myValue,
+				valueMax,
+				0,
+				1680,
+				0
 			); // [17098250,50]
 
 			currentCountry.myColor = color(200, 100, 100);
@@ -70,14 +81,19 @@ function setup() {
 			"Percentage of people with trust in/Police (%)"
 		);
 
-		//Map
-		//currentTrust.mySize = map(
-		//	currentTrust.myCountryArea,
-		//	17098250,
-		//	50,
-		//	700,
-		//	5
-		//); // [17098250,50]
+		//For-Schleife höchstes Vertrauen
+		for (let t = 0; trustMax < currentTrust.myTrustinPoliceP; t++) {
+			trustMax = trustMax + 1;
+		}
+
+		//Map Position
+		currentTrust.myPosition = map(
+			currentTrust.myTrustinPoliceP,
+			trustMax,
+			0,
+			height,
+			0
+		); // [17098250,50]
 
 		currentTrust.myColor = color(200, 100, 100);
 
@@ -121,20 +137,20 @@ function draw() {
 	pop();
 
 	//viel
-	//push();
-	//noStroke();
-	//fill(200);
-	//textSize(80);
-	//text("viel", 0 + 100, 1050 / 2);
-	//pop();
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("viel", 0 + 100, 1050 / 2);
+	pop();
 
 	//wenig
-	//push();
-	//noStroke();
-	//fill(200);
-	//textSize(80);
-	//text("wenig", 1680 - 200, 1050 / 2);
-	//pop();
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("wenig", 1680 - 200, 1050 / 2);
+	pop();
 
 	//FrameRate
 	push();

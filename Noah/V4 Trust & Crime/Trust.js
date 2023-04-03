@@ -9,6 +9,7 @@ class TrustinPolice {
 		this.myTrustinPoliceC = "NaN";
 		this.myTrustinPoliceP = "NaN";
 		this.mySize = 0;
+		this.myPosition = 0;
 		this.myWidth = 6;
 		this.myColor = color(0, 0, 0);
 		this.estaEncima = false;
@@ -26,7 +27,7 @@ class TrustinPolice {
 		ellipseMode("CENTER");
 		ellipse(
 			500,
-			this.myTrustinPoliceP * 10,
+			this.myPosition,
 			this.myTrustinPoliceP / 0.5,
 			this.myTrustinPoliceP / 0.5
 		);
