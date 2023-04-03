@@ -91,8 +91,8 @@ function setup() {
 			currentTrust.myTrustinPoliceP,
 			trustMax,
 			0,
-			height,
-			0
+			0,
+			height
 		); // [17098250,50]
 
 		currentTrust.myColor = color(200, 100, 100);
