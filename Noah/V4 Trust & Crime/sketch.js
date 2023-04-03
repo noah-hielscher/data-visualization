@@ -69,8 +69,6 @@ if (myRow.get("Region") == "Europe") {
 			"Percentage of people with trust in/Police (%)"
 		);
 
-		//Import Datenbank
-
 		//Map
 		currentTrust.mySize = map(
 			currentTrust.myCountryArea,
