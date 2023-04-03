@@ -98,6 +98,12 @@ function draw() {
 		currentX += myTrust[i].myWidth + 2;
 	}
 
+	//Display Crime
+	for (let i = 0; i < myCrime.length; i++) {
+		myCrime[i].display(currentX, currentY);
+		currentX += myCrime[i].myWidth + 2;
+	}
+
 	//100%
 	push();
 	noStroke();
@@ -115,20 +121,20 @@ function draw() {
 	pop();
 
 	//viel
-	push();
-	noStroke();
-	fill(200);
-	textSize(80);
-	text("viel", 0 + 100, 1050 / 2);
-	pop();
+	//push();
+	//noStroke();
+	//fill(200);
+	//textSize(80);
+	//text("viel", 0 + 100, 1050 / 2);
+	//pop();
 
 	//wenig
-	push();
-	noStroke();
-	fill(200);
-	textSize(80);
-	text("viel", 1680 - 100, 1050 / 2);
-	pop();
+	//push();
+	//noStroke();
+	//fill(200);
+	//textSize(80);
+	//text("wenig", 1680 - 200, 1050 / 2);
+	//pop();
 
 	//FrameRate
 	push();

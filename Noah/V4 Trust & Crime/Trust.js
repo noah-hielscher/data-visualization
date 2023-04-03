@@ -25,8 +25,8 @@ class TrustinPolice {
 		noFill();
 		ellipseMode("CENTER");
 		ellipse(
-			300,
-			300,
+			500,
+			this.myTrustinPoliceP * 10,
 			this.myTrustinPoliceP / 0.5,
 			this.myTrustinPoliceP / 0.5
 		);
