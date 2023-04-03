@@ -10,7 +10,7 @@ class TrustinPolice {
 		this.myTrustinPoliceP = "NaN";
 		this.mySize = 0;
 		this.myWidth = 6;
-		this.myColor = color(100, 100, 255);
+		this.myColor = color(0, 0, 0);
 		this.estaEncima = false;
 	}
 
@@ -21,9 +21,9 @@ class TrustinPolice {
 			mouseY > myY - this.mySize &&
 			mouseY < myY;
 
-		noStroke();
-		fill(this.myColor);
-		rect(myX, myY, this.myWidth, -this.mySize);
+		stroke(this.myColor);
+		noFill();
+		ellipse(100, 50, this.myTrustinPoliceP, this.myTrustinPoliceP);
 
 		if (this.estaEncima) {
 			fill(200);

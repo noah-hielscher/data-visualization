@@ -23,33 +23,34 @@ function setup() {
 
 	for (let myRow of crimeData.rows) {
 		let currentCountry = new Country();
-if (myRow.get("Region") == "Europe") {
-	
-		
-		//Import
-		currentCountry.myIso = myRow.get("Iso3_code");
-		currentCountry.myCountry = myRow.get("Country");
-		currentCountry.myRegion = myRow.get("Region");
-		currentCountry.mySubregion = myRow.get("Subregion");
-		currentCountry.myCategory = myRow.get("Category");
-		currentCountry.mySex = myRow.get("Sex");
-		currentCountry.myAge = myRow.get("Age");
-		currentCountry.myYear = myRow.get("Year");
-		currentCountry.myValue = myRow.get("VALUE");
 
-		//Map
-		currentCountry.mySize = map(
-			currentCountry.myCountryArea,
-			17098250,
-			50,
-			700,
-			5
-		); // [17098250,50]
+		//Sortierung nach Europa
+		if (myRow.get("Region") == "Europe") {
+			//Import
+			currentCountry.myIso = myRow.get("Iso3_code");
+			currentCountry.myCountry = myRow.get("Country");
+			currentCountry.myRegion = myRow.get("Region");
+			currentCountry.mySubregion = myRow.get("Subregion");
+			currentCountry.myCategory = myRow.get("Category");
+			currentCountry.mySex = myRow.get("Sex");
+			currentCountry.myAge = myRow.get("Age");
+			currentCountry.myYear = myRow.get("Year");
+			currentCountry.myValue = myRow.get("VALUE");
 
-		currentCountry.myColor = color(200, 100, 100);
+			//Map
+			currentCountry.mySize = map(
+				currentCountry.myCountryArea,
+				17098250,
+				50,
+				700,
+				5
+			); // [17098250,50]
 
-		myCrime[c] = currentCountry;
-		c++;}
+			currentCountry.myColor = color(200, 100, 100);
+
+			myCrime[c] = currentCountry;
+			c++;
+		}
 	}
 
 	//Import Trust
@@ -86,7 +87,7 @@ if (myRow.get("Region") == "Europe") {
 }
 
 function draw() {
-	background(51);
+	background("white");
 
 	let currentX = 10;
 	let currentY = 750;
