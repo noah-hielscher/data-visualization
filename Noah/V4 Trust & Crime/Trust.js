@@ -24,12 +24,11 @@ class TrustinPolice {
 		stroke(this.myColor);
 		noFill();
 		ellipseMode("CENTER");
-		//ellipse(300, 300, this.myTrustinPoliceP, this.myTrustinPoliceP);
 		ellipse(
 			300,
 			300,
-			this.myTrustinPoliceP / 0.1,
-			this.myTrustinPoliceP / 0.1
+			this.myTrustinPoliceP / 0.5,
+			this.myTrustinPoliceP / 0.5
 		);
 
 		if (this.estaEncima) {

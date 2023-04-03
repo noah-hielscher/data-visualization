@@ -16,7 +16,7 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(1400, 800);
+	createCanvas(1680, 1050);
 
 	//Import Crime
 	let c = 0;
@@ -98,8 +98,43 @@ function draw() {
 		currentX += myTrust[i].myWidth + 2;
 	}
 
+	//100%
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("100%", 1680 / 2, 100);
+	pop();
+
+	//0%
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("0%", 1680 / 2, 1050 - 100);
+	pop();
+
+	//viel
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("viel", 0 + 100, 1050 / 2);
+	pop();
+
+	//wenig
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("viel", 1680 - 100, 1050 / 2);
+	pop();
+
 	//FrameRate
+	push();
+	noStroke();
 	fill(200);
 	textSize(12);
 	text("frameRate:   " + Math.round(frameRate()), 10, height - 5);
+	pop();
 }
