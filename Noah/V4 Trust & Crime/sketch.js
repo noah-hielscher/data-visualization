@@ -67,8 +67,6 @@ function setup() {
 			"Percentage of people with trust in/Police (%)"
 		);
 
-		//Import Datenbank
-
 		//Map
 		currentTrust.mySize = map(
 			currentTrust.myCountryArea,
