@@ -23,7 +23,9 @@ function setup() {
 
 	for (let myRow of crimeData.rows) {
 		let currentCountry = new Country();
-
+if (myRow.get("Region") == "Europe") {
+	
+		
 		//Import
 		currentCountry.myIso = myRow.get("Iso3_code");
 		currentCountry.myCountry = myRow.get("Country");
@@ -47,7 +49,7 @@ function setup() {
 		currentCountry.myColor = color(200, 100, 100);
 
 		myCrime[c] = currentCountry;
-		c++;
+		c++;}
 	}
 
 	//Import Trust
