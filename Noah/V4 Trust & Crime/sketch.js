@@ -71,13 +71,13 @@ function setup() {
 		);
 
 		//Map
-		currentTrust.mySize = map(
-			currentTrust.myCountryArea,
-			17098250,
-			50,
-			700,
-			5
-		); // [17098250,50]
+		//currentTrust.mySize = map(
+		//	currentTrust.myCountryArea,
+		//	17098250,
+		//	50,
+		//	700,
+		//	5
+		//); // [17098250,50]
 
 		currentTrust.myColor = color(200, 100, 100);
 

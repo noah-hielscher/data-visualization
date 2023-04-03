@@ -28,9 +28,9 @@ class Country {
 			mouseY > myY - this.mySize &&
 			mouseY < myY;
 
-		noStroke();
-		fill(this.myColor);
-		rect(myX, myY, this.myWidth, -this.mySize);
+		//noStroke();
+		//fill(this.myColor);
+		//rect(myX, myY, this.myWidth, -this.mySize);
 
 		if (this.estaEncima) {
 			fill(200);
