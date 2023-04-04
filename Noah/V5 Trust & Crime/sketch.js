@@ -2,15 +2,10 @@
 Marsha, Noah, Lukas
 */
 
-//For-Schleife meiste Vorfälle
-let valueMax = 0;
-
-//For-Schleife meiste Vorfälle
-let trustMax = 0;
-
 //Datenbank Crime
 let crimeData;
 let myCrime = [];
+let result = {};
 
 //Datenbank Trust
 let trustData;
@@ -24,82 +19,72 @@ function preload() {
 function setup() {
 	createCanvas(1680, 1050);
 
-	//Import Crime
-	let c = 0;
-
-	for (let myRow of crimeData.rows) {
-		let currentCountry = new Country();
-
-		//Sortierung nach Europa
-		if (myRow.get("Region") == "Europe") {
-			//Import
-			currentCountry.myIso = myRow.get("Iso3_code");
-			currentCountry.myCountry = myRow.get("Country");
-			currentCountry.myRegion = myRow.get("Region");
-			currentCountry.mySubregion = myRow.get("Subregion");
-			currentCountry.myCategory = myRow.get("Category");
-			currentCountry.mySex = myRow.get("Sex");
-			currentCountry.myAge = myRow.get("Age");
-			currentCountry.myYear = myRow.get("Year");
-			currentCountry.myValue = myRow.get("VALUE");
-
-			//For-Schleife meiste Vorfälle
-			for (let v = 0; valueMax < currentCountry.myValue; v++) {
-				valueMax = valueMax + 1;
-			}
-
-			//Map
-			currentCountry.myPosition = map(
-				currentCountry.myValue,
-				valueMax,
-				0,
-				1680,
-				0
-			); // [17098250,50]
-
-			currentCountry.myColor = color(200, 100, 100);
-
-			myCrime[c] = currentCountry;
-			c++;
-		}
-	}
-
-	//Import Trust
-
 	let i = 0;
 
-	for (let myRow of trustData.rows) {
-		let currentTrust = new TrustinPolice();
+	// Erstelle ein Objekt
 
-		//ImportDatenbank
-		currentTrust.myCountry = myRow.get("Countries");
-		currentTrust.myYears = myRow.get("Periods");
-		currentTrust.myTrustinPoliceC = myRow.get(
-			"Evaluation of trust in/Police (score)"
-		);
-		currentTrust.myTrustinPoliceP = myRow.get(
-			"Percentage of people with trust in/Police (%)"
-		);
+	/** @type {Array<{country: string; year: number}>} */
+	//Trust
+	let data = trustData.rows.map((row) => ({
+		country: row.obj["Countries"],
+		year: row.obj["Year"],
+		trustinPoliceScore: row.obj["Evaluation of trust in/Police (score)"],
+		trustinPolicePercentage:
+			row.obj["Percentage of people with trust in/Police (%)"],
+	}));
 
-		//For-Schleife höchstes Vertrauen
-		for (let t = 0; trustMax < currentTrust.myTrustinPoliceP; t++) {
-			trustMax = trustMax + 1;
+	//Crime
+	//let dataCrime = crimeData.rows.map((row) => ({
+	//	country: row.obj["Countries"],
+	//	year: row.obj["Year"],
+	//}));
+
+	// {country: <Name>, year: <Jahr>}
+
+	//Trust
+	for (let row of data) {
+		let { country, year, trustinPoliceScore, trustinPolicePercentage } =
+			row;
+
+		if (!result[country]) {
+			result[country] = [];
 		}
 
-		//Map Position
-		currentTrust.myPosition = map(
-			currentTrust.myTrustinPoliceP,
-			trustMax,
-			0,
-			0,
-			height
-		); // [17098250,50]
-
-		currentTrust.myColor = color(200, 100, 100);
-
-		myTrust[i] = currentTrust;
-		i++;
+		result[country].push({
+			year: +year,
+			trustinPoliceScore: !trustinPoliceScore
+				? null
+				: +trustinPoliceScore,
+			trustinPolicePercentage: !trustinPolicePercentage
+				? null
+				: +trustinPolicePercentage,
+		}); // parseInt(row.year)
 	}
+
+	// Gehe crime durch
+	// Wenn in result das Land und Jahr passt
+	// dann füge sämtliche Attribute ein
+
+	for (let i = 0; i < crimeData.rows.length; i++) {
+		// console.log(crimeData.rows[i]);
+
+		let row = crimeData.rows[i];
+		let country = row.obj["Country"],
+			year = +row.obj["Year"];
+
+		// Land
+		if (result[country]) {
+			if (exists(year, result[country])) {
+				// Füge alle Attribute zu
+			}
+		}
+	}
+
+	console.log(result);
+}
+
+function exists(value, arr) {
+	return arr.some((data) => data.year === value);
 }
 
 function draw() {

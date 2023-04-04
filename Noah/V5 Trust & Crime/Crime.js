@@ -5,7 +5,6 @@ Marsha, Noah, Lukas
 class Country {
 	constructor() {
 		//Datenbank
-		this.myIso = "NaN";
 		this.myCountry = "NaN";
 		this.myRegion = "NaN";
 		this.mySubregion = "NaN";
