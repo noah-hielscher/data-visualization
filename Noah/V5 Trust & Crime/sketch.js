@@ -11,6 +11,11 @@ let result = {};
 let trustData;
 let myTrust = [];
 
+// Box definieren, in der euer Diagramm aufbauen wollt
+
+// ..._______________...
+// ...|				|...
+
 function preload() {
 	trustData = loadTable("data/trust.csv", "csv", "header");
 	crimeData = loadTable("data/Crime.csv", "csv", "header");
@@ -75,12 +80,26 @@ function setup() {
 		// Land
 		if (result[country]) {
 			if (exists(year, result[country])) {
-				// Füge alle Attribute zu
+				// 1. Greife auf die andere Datenbank zu
+				// 2. Füge die restlichen Spalten ein
+
+				// result[country] -> Array aus Objekten
+				// obj => {year: <number>, ...}
+				let dataset = result[country].find((obj) => obj.year === year);
+
+				//"Deep copy" unserer Spalten aus dem zweiten Datensatz für das Land und Jahr
+				const obj = { ...crimeData.rows[i].obj };
+
+				// lösche die Spaltenwerte, damit es keine Überlappungen gibt
+				delete obj["Country"];
+				delete obj["Year"];
+				obj["Source"] = +obj["Source"];
+
+				// "Merge" den neuen mit dem alten Datensatz zusammen
+				Object.assign(dataset, obj);
 			}
 		}
 	}
-
-	console.log(result);
 }
 
 function exists(value, arr) {
