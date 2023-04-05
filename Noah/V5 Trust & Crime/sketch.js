@@ -109,19 +109,35 @@ function exists(value, arr) {
 function draw() {
 	background("white");
 
-	let currentX = 10;
-	let currentY = 750;
+	let xPos = 100;
+	let yPos = 100;
 
-	//Display Trust
-	for (let i = 0; i < myTrust.length; i++) {
-		myTrust[i].display(currentX, currentY);
-		currentX += myTrust[i].myWidth + 2;
-	}
+	// Schleife über jedes Land im "result" Objekt
+	for (let country in result) {
+		let countryData = result[country];
 
-	//Display Crime
-	for (let i = 0; i < myCrime.length; i++) {
-		myCrime[i].display(currentX, currentY);
-		currentX += myCrime[i].myWidth + 2;
+		// Finde die neuesten Daten für das Land
+		let latestData = countryData[countryData.length - 1];
+
+		// Berechne die Größe des Kreises basierend auf dem Wert
+		let size = latestData.trustinPolicePercentage;
+
+		// Position der Kreise
+		let posKreis = latestData.trustinPolicePercentage;
+
+		// Mappen der Poskreis
+		//currentCountry.myPosition = map(
+		//	currentCountry.myValue,
+		//	valueMax,
+		//	0,
+		//	1680,
+		//	0
+		//);
+
+		// Zeichne den Kreis
+		noStroke();
+		fill(255, 0, 0);
+		ellipse(posKreis * 10, 500, size, size);
 	}
 
 	//100%
