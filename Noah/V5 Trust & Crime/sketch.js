@@ -93,7 +93,7 @@ function setup() {
 				// lösche die Spaltenwerte, damit es keine Überlappungen gibt
 				delete obj["Country"];
 				delete obj["Year"];
-				obj["Source"] = +obj["Source"];
+				obj["Score"] = +obj["Score"];
 
 				// "Merge" den neuen mit dem alten Datensatz zusammen
 				Object.assign(dataset, obj);
@@ -123,7 +123,7 @@ function draw() {
 		let size = latestData.trustinPolicePercentage;
 
 		// Position der Kreise x
-		let posKreisx = latestData.trustinPolicePercentage;
+		let posKreisx = latestData.valueCrime;
 
 		// Position der Kreise y
 		let posKreisy = latestData.trustinPolicePercentage;
@@ -140,7 +140,7 @@ function draw() {
 		// Zeichne den Kreis
 		noStroke();
 		fill(255, 0, 0);
-		ellipse(posKreisx * 10, posKreisy, size, size);
+		ellipse(posKreisx, posKreisy * 10, size, size);
 	}
 
 	//100%
