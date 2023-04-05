@@ -6,7 +6,7 @@ Marsha Tasch, Lukas Speidel, Noah Hielscher
 let sizeAll = 2;
 
 //Rand
-let border = 200;
+let border = 100;
 
 // Let für For-Schleife für den größten Score von Crime
 let scoreMax = 0;
