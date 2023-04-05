@@ -122,13 +122,16 @@ function draw() {
 		// Berechne die Größe des Kreises basierend auf dem Wert
 		let size = latestData.trustinPolicePercentage;
 
-		// Position der Kreise
-		let posKreis = latestData.trustinPolicePercentage;
+		// Position der Kreise x
+		let posKreisx = latestData.trustinPolicePercentage;
+
+		// Position der Kreise y
+		let posKreisy = latestData.trustinPolicePercentage;
 
 		// Mappen der Poskreis
 		//currentCountry.myPosition = map(
 		//	currentCountry.myValue,
-		//	valueMax,
+		//	100,
 		//	0,
 		//	1680,
 		//	0
@@ -137,7 +140,7 @@ function draw() {
 		// Zeichne den Kreis
 		noStroke();
 		fill(255, 0, 0);
-		ellipse(posKreis * 10, 500, size, size);
+		ellipse(posKreisx * 10, posKreisy, size, size);
 	}
 
 	//100%
