@@ -238,3 +238,10 @@ function draw() {
 	pop();
 	image(img, 100, height-600);
 }
+
+//Hoover Effect
+function mouseReleased() {
+	for (let r = 0; r < numOfCities; r++) {
+		myCities[r].releasedOverMe();
+	}
+}
