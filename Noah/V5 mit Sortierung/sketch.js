@@ -1,15 +1,6 @@
 /*
-Marsha Tasch, Lukas Speidel, Noah Hielscher
+Marsha, Noah, Lukas
 */
-
-//Slider
-let mySlider;
-
-// Multiplikator für die Größe
-let sizeAll = 2;
-
-//Rand
-let border = 100;
 
 // Let für For-Schleife für den größten Score von Crime
 let scoreMax = 0;
@@ -19,13 +10,9 @@ let crimeData;
 let myCrime = [];
 let result = {};
 
-//Datenbank Trust0
+//Datenbank Trust
 let trustData;
 let myTrust = [];
-
-let latestData;
-
-let filterYear = 2018;
 
 // Box definieren, in der euer Diagramm aufbauen wollt
 
@@ -35,22 +22,10 @@ let filterYear = 2018;
 function preload() {
 	trustData = loadTable("data/trust.csv", "csv", "header");
 	crimeData = loadTable("data/Crime.csv", "csv", "header");
-	img = loadImage("data/crime_and_trust_graph.png");
 }
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-
-	//Slider
-	mySlider = new Slider(
-		windowWidth - 500,
-		windowHeight - 100,
-		400,
-		20,
-		4,
-		18,
-		11
-	);
+	createCanvas(1680, 1050);
 
 	let i = 0;
 
@@ -135,25 +110,59 @@ function exists(value, arr) {
 }
 
 function draw() {
-	background("black");
+	background("white");
 
-	//Slider wird gemalt
-	mySlider.render();
+	// Check, ob Taste "p" gedrückt wurde
+	if (keyIsPressed && key === "p") {
+		// Schleife über jedes Land im "result" Objekt
+		for (let country in result) {
+			let countryData = result[country];
 
-	// Schleife über jedes Land im "result" Objekt
-	for (let country in result) {
-		let countryData = result[country];
+			// Finde den Datensatz für das Jahr 2004 für das Land
+			let data2004 = countryData.find((data) => data.year === 2018);
+			if (data2004) {
+				// Berechne die Größe des Kreises basierend auf dem Wert
+				let size = data2004.trustinPolicePercentage;
 
-		// Finde die neuesten Daten für das Land
-		let latestData = countryData[countryData.length - 1];
+				// Position der Kreise x
+				let posKreisx = data2004.Score;
 
-		// Filtere die Daten nach dem Jahr
-		if (latestData.year === filterYear) {
+				// Position der Kreise y
+				let posKreisy = data2004.trustinPolicePercentage;
+
+				//For-Schleife für den größten Score von Crime
+				for (let t = 0; scoreMax < data2004.Score; t++) {
+					scoreMax = scoreMax + 1;
+				}
+
+				// Mappen der %
+				posKreisy = map(
+					data2004.trustinPolicePercentage,
+					100,
+					0,
+					0,
+					1050
+				);
+
+				// Mappen der Score
+				posKreisx = map(data2004.Score, scoreMax, 0, 1680, 0);
+
+				// Zeichne den Kreis
+				noStroke();
+				fill(255, 0, 0);
+				ellipse(posKreisx * 10, posKreisy, size, size);
+			}
+		}
+	} else {
+		// Schleife über jedes Land im "result" Objekt
+		for (let country in result) {
+			let countryData = result[country];
+
+			// Finde die neuesten Daten für das Land
+			let latestData = countryData[countryData.length - 1];
+
 			// Berechne die Größe des Kreises basierend auf dem Wert
-			let size = latestData.Score * sizeAll * 1.9;
-
-			// Größe von dem Trust
-			let sizeTrust = latestData.trustinPolicePercentage * sizeAll;
+			let size = latestData.trustinPolicePercentage;
 
 			// Position der Kreise x
 			let posKreisx = latestData.Score;
@@ -171,81 +180,57 @@ function draw() {
 				latestData.trustinPolicePercentage,
 				100,
 				0,
-				border,
-				windowHeight - border
+				0,
+				1050
 			);
 
 			// Mappen der Score
-			posKreisx = map(
-				latestData.Score,
-				scoreMax,
-				0,
-				border,
-				windowWidth - border
-			);
-			push();
-			noStroke();
-
-			if (latestData.year === 2006) {
-				console.log("Hallo");
-			}
-
-			if (latestData.Subregion == "Northern Europe") {
-				fill(80, 120, 170);
-				ellipse(posKreisx, posKreisy, size, size);
-			}
-
-			if (latestData.Subregion == "Eastern Europe") {
-				fill(130, 30, 100);
-				ellipse(posKreisx, posKreisy, size, size);
-			}
-
-			if (latestData.Subregion == "Southern Europe") {
-				fill(255, 170, 35);
-				ellipse(posKreisx, posKreisy, size, size);
-			}
-
-			if (latestData.Subregion == "Western Europe") {
-				fill(50, 110, 110);
-				ellipse(posKreisx, posKreisy, size, size);
-			}
-			push();
-			/* 		// Zeichne den Kreis
-			noStroke();
-			fill(255, 0, 0);
-			ellipse(posKreisx, posKreisy, size, size); */
+			posKreisx = map(latestData.Score, scoreMax, 0, 1680, 0);
 
 			// Zeichne den Kreis
-			push();
-			stroke("white");
-			strokeWeight(2);
-			noFill();
-			ellipse(posKreisx, posKreisy, sizeTrust, sizeTrust);
-			pop();
-		} else {
-			//console.log("Fehler");
+			noStroke();
+			fill(255, 0, 0);
+			ellipse(posKreisx, posKreisy, size, size);
 		}
 	}
 
-	//Erstellt von
+	//100%
 	push();
 	noStroke();
 	fill(200);
-	textSize(16);
-	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 200, height - 5);
+	textSize(80);
+	text("100%", 1680 / 2, 100);
 	pop();
-	image(img, 100, height - 600);
-}
 
-//für Slider
-function mousePressed() {
-	mySlider.mouseClickMe();
-}
+	//0%
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("0%", 1680 / 2, 1050 - 100);
+	pop();
 
-function mouseReleased() {
-	mySlider.mouseReleasedMe();
-}
+	//viel
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("viel", 0 + 100, 1050 / 2);
+	pop();
 
-function mouseDragged() {
-	mySlider.mouseDraggingMe();
+	//wenig
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("wenig", 1680 - 200, 1050 / 2);
+	pop();
+
+	//FrameRate
+	push();
+	noStroke();
+	fill(200);
+	textSize(12);
+	text("frameRate:   " + Math.round(frameRate()), 10, height - 5);
+	pop();
 }

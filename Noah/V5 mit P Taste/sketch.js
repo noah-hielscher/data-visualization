@@ -14,6 +14,8 @@ let result = {};
 let trustData;
 let myTrust = [];
 
+let sollyear = 2004;
+
 // Box definieren, in der euer Diagramm aufbauen wollt
 
 // ..._______________...
@@ -113,84 +115,40 @@ function draw() {
 	background("white");
 
 	// Check, ob Taste "p" gedrückt wurde
-	if (keyIsPressed && key === "p") {
-		// Schleife über jedes Land im "result" Objekt
-		for (let country in result) {
-			let countryData = result[country];
 
-			// Finde den Datensatz für das Jahr 2004 für das Land
-			let data2004 = countryData.find((data) => data.year === 2004);
-			if (data2004) {
-				// Berechne die Größe des Kreises basierend auf dem Wert
-				let size = data2004.trustinPolicePercentage;
+	// Schleife über jedes Land im "result" Objekt
+	for (let country in result) {
+		let countryData = result[country];
 
-				// Position der Kreise x
-				let posKreisx = data2004.Score;
-
-				// Position der Kreise y
-				let posKreisy = data2004.trustinPolicePercentage;
-
-				//For-Schleife für den größten Score von Crime
-				for (let t = 0; scoreMax < data2004.Score; t++) {
-					scoreMax = scoreMax + 1;
-				}
-
-				// Mappen der %
-				posKreisy = map(
-					data2004.trustinPolicePercentage,
-					100,
-					0,
-					0,
-					1050
-				);
-
-				// Mappen der Score
-				posKreisx = map(data2004.Score, scoreMax, 0, 1680, 0);
-
-				// Zeichne den Kreis
-				noStroke();
-				fill(255, 0, 0);
-				ellipse(posKreisx * 10, posKreisy, size, size);
-			}
-		}
-	} else {
-		// Schleife über jedes Land im "result" Objekt
-		for (let country in result) {
-			let countryData = result[country];
-
-			// Finde die neuesten Daten für das Land
-			let latestData = countryData[countryData.length - 1];
-
+		// Finde den Datensatz für das Jahr 2004 für das Land
+		let data2004 = countryData.find(
+			(data) => data.year === sollyear + mySlider
+		);
+		if (data2004) {
 			// Berechne die Größe des Kreises basierend auf dem Wert
-			let size = latestData.trustinPolicePercentage;
+			let size = data2004.trustinPolicePercentage;
 
 			// Position der Kreise x
-			let posKreisx = latestData.Score;
+			let posKreisx = data2004.Score;
 
 			// Position der Kreise y
-			let posKreisy = latestData.trustinPolicePercentage;
+			let posKreisy = data2004.trustinPolicePercentage;
 
 			//For-Schleife für den größten Score von Crime
-			for (let t = 0; scoreMax < latestData.Score; t++) {
+			for (let t = 0; scoreMax < data2004.Score; t++) {
 				scoreMax = scoreMax + 1;
 			}
 
 			// Mappen der %
-			posKreisy = map(
-				latestData.trustinPolicePercentage,
-				100,
-				0,
-				0,
-				1050
-			);
+			posKreisy = map(data2004.trustinPolicePercentage, 100, 0, 0, 1050);
 
 			// Mappen der Score
-			posKreisx = map(latestData.Score, scoreMax, 0, 1680, 0);
+			posKreisx = map(data2004.Score, scoreMax, 0, 1680, 0);
 
 			// Zeichne den Kreis
 			noStroke();
 			fill(255, 0, 0);
-			ellipse(posKreisx, posKreisy, size, size);
+			ellipse(posKreisx * 10, posKreisy, size, size);
 		}
 	}
 

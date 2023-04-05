@@ -25,7 +25,7 @@ let myTrust = [];
 
 let latestData;
 
-let filterYear = 2018;
+let filterYear = 2016;
 
 // Box definieren, in der euer Diagramm aufbauen wollt
 
@@ -145,7 +145,7 @@ function draw() {
 		let countryData = result[country];
 
 		// Finde die neuesten Daten für das Land
-		let latestData = countryData[countryData.length - 1];
+		let latestData = getDatafrom(filterYear);
 
 		// Filtere die Daten nach dem Jahr
 		if (latestData.year === filterYear) {
