@@ -236,3 +236,10 @@ function draw() {
 	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 10, height - 5);
 	pop();
 }
+
+//Hoover Effect
+function mouseReleased() {
+	for (let r = 0; r < numOfCities; r++) {
+		myCities[r].releasedOverMe();
+	}
+}
