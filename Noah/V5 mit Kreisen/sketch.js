@@ -28,7 +28,7 @@ let myTrust = [];
 function preload() {
 	trustData = loadTable("data/trust.csv", "csv", "header");
 	crimeData = loadTable("data/Crime.csv", "csv", "header");
-	img = loadImage('data/crime_and_trust_graph.png');
+	img = loadImage("data/crime_and_trust_graph.png");
 }
 
 function setup() {
@@ -197,38 +197,6 @@ function draw() {
 		pop();
 	}
 
-	//100%
-	push();
-	noStroke();
-	fill(200);
-	textSize(80);
-	text("100%", 1680 / 2, 100);
-	pop();
-
-	//0%
-	push();
-	noStroke();
-	fill(200);
-	textSize(80);
-	text("0%", 1680 / 2, 1050 - 100);
-	pop();
-
-	//viel
-	push();
-	noStroke();
-	fill(200);
-	textSize(80);
-	text("viel", 0 + 100, 1050 / 2);
-	pop();
-
-	//wenig
-	push();
-	noStroke();
-	fill(200);
-	textSize(80);
-	text("wenig", 1680 - 200, 1050 / 2);
-	pop();
-
 	//Erstellt von
 	push();
 	noStroke();
@@ -236,7 +204,7 @@ function draw() {
 	textSize(16);
 	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 10, height - 5);
 	pop();
-	image(img, 100, height-600);
+	image(img, 100, height - 600);
 }
 
 //Hoover Effect
