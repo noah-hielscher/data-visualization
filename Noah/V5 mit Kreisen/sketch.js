@@ -2,6 +2,12 @@
 Marsha, Noah, Lukas
 */
 
+// Multiplikator für die Größe
+let sizeAll = 2;
+
+//Rand
+let border = 100;
+
 // Let für For-Schleife für den größten Score von Crime
 let scoreMax = 0;
 
@@ -120,7 +126,10 @@ function draw() {
 		let latestData = countryData[countryData.length - 1];
 
 		// Berechne die Größe des Kreises basierend auf dem Wert
-		let size = latestData.trustinPolicePercentage;
+		let size = latestData.Score * sizeAll;
+
+		// Größe von dem Trust
+		let sizeTrust = latestData.trustinPolicePercentage * sizeAll;
 
 		// Position der Kreise x
 		let posKreisx = latestData.Score;
@@ -134,15 +143,26 @@ function draw() {
 		}
 
 		// Mappen der %
-		posKreisy = map(latestData.trustinPolicePercentage, 100, 0, 0, 1050);
+		posKreisy = map(
+			latestData.trustinPolicePercentage,
+			100,
+			0,
+			border,
+			1050 - border
+		);
 
 		// Mappen der Score
-		posKreisx = map(latestData.Score, scoreMax, 0, 1680, 0);
+		posKreisx = map(latestData.Score, scoreMax, 0, border, 1680 - border);
 
 		// Zeichne den Kreis
 		noStroke();
 		fill(255, 0, 0);
-		ellipse(posKreisx * 10, posKreisy, size, size);
+		ellipse(posKreisx, posKreisy, size, size);
+
+		// Zeichne den Kreis
+		stroke("black");
+		noFill();
+		ellipse(posKreisx, posKreisy, sizeTrust, sizeTrust);
 	}
 
 	//100%

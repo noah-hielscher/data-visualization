@@ -190,7 +190,7 @@ function draw() {
 			// Zeichne den Kreis
 			noStroke();
 			fill(255, 0, 0);
-			ellipse(posKreisx * 10, posKreisy, size, size);
+			ellipse(posKreisx, posKreisy, size, size);
 		}
 	}
 
