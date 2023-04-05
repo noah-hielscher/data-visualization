@@ -126,7 +126,7 @@ function draw() {
 		let latestData = countryData[countryData.length - 1];
 
 		// Berechne die Größe des Kreises basierend auf dem Wert
-		let size = latestData.Score * sizeAll;
+		let size = latestData.Score * sizeAll * 1.9;
 
 		// Größe von dem Trust
 		let sizeTrust = latestData.trustinPolicePercentage * sizeAll;
