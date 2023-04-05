@@ -123,24 +123,21 @@ function draw() {
 		let size = latestData.trustinPolicePercentage;
 
 		// Position der Kreise x
-		let posKreisx = latestData.valueCrime;
+		let posKreisx = latestData.Score;
 
 		// Position der Kreise y
 		let posKreisy = latestData.trustinPolicePercentage;
 
-		// Mappen der Poskreis
-		//currentCountry.myPosition = map(
-		//	currentCountry.myValue,
-		//	100,
-		//	0,
-		//	1680,
-		//	0
-		//);
+		// Mappen der %
+		posKreisy = map(latestData.trustinPolicePercentage, 100, 0, 0, 1050);
+
+		// Mappen der Score
+		posKreisx = map(latestData.Score, 100, 0, 1680, 0);
 
 		// Zeichne den Kreis
 		noStroke();
 		fill(255, 0, 0);
-		ellipse(posKreisx, posKreisy * 10, size, size);
+		ellipse(posKreisx * 10, posKreisy, size, size);
 	}
 
 	//100%
