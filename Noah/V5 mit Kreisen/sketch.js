@@ -28,6 +28,7 @@ let myTrust = [];
 function preload() {
 	trustData = loadTable("data/trust.csv", "csv", "header");
 	crimeData = loadTable("data/Crime.csv", "csv", "header");
+	img = loadImage('data/crime_and_trust_graph.png');
 }
 
 function setup() {
@@ -235,4 +236,5 @@ function draw() {
 	textSize(16);
 	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 10, height - 5);
 	pop();
+	image(img, 100, height-600);
 }
