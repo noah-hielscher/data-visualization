@@ -223,6 +223,14 @@ function draw() {
 	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 200, height - 5);
 	pop();
 	image(img, 100, height - 600);
+
+	//Jahr Anzeige
+	push();
+	noStroke();
+	fill("white");
+	textSize(100);
+	text(2000 + mySlider.myValue, 600, 400);
+	pop();
 }
 
 //für Slider
