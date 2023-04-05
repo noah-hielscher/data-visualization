@@ -191,6 +191,7 @@ function draw() {
 		// Zeichne den Kreis
 		push();
 		stroke("white");
+		strokeWeight(2);
 		noFill();
 		ellipse(posKreisx, posKreisy, sizeTrust, sizeTrust);
 		pop();
@@ -232,7 +233,7 @@ function draw() {
 	push();
 	noStroke();
 	fill(200);
-	textSize(12);
+	textSize(16);
 	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 10, height - 5);
 	pop();
 }
