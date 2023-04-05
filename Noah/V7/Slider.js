@@ -83,11 +83,11 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 		//value text
 		textSize(this.myTextSize - 2);
 		textAlign(CENTER);
-		text(
-			this.myValue.toFixed(0),
-			this.posButtonX - 3,
-			this.myY + this.myHeight + 25
-		);
+		//text(
+		//	this.myValue.toFixed(0),
+		//	this.posButtonX - 3,
+		//	this.myY + this.myHeight + 25
+		//);
 	};
 
 	this.mouseClickMe = function () {
