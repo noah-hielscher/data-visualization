@@ -139,7 +139,13 @@ function draw() {
 		fill(255, 0, 0);
 		ellipse(posKreisx * 10, posKreisy, size, size);
 	}
-
+	
+	let ScoreMax = 0;
+	//For-Schleife höchstes Vertrauen
+	for (let t = 0; ScoreMax < latestData.valueCrime; t++) {
+		trustMax = trustMax + 1;
+	}
+	
 	//100%
 	push();
 	noStroke();
