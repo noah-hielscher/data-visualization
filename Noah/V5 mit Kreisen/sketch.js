@@ -6,7 +6,7 @@ Marsha Tasch, Lukas Speidel, Noah Hielscher
 let sizeAll = 2;
 
 //Rand
-let border = 100;
+let border = 200;
 
 // Let für For-Schleife für den größten Score von Crime
 let scoreMax = 0;
@@ -16,7 +16,7 @@ let crimeData;
 let myCrime = [];
 let result = {};
 
-//Datenbank Trust
+//Datenbank Trust0
 let trustData;
 let myTrust = [];
 
@@ -180,7 +180,6 @@ function draw() {
 		if (latestData.Subregion == "Western Europe") {
 			fill(50, 110, 110);
 			ellipse(posKreisx, posKreisy, size, size);
-			console.log("Western Europe");
 		}
 		push();
 		/* 		// Zeichne den Kreis
