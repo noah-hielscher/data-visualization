@@ -23,8 +23,6 @@ let result = {};
 let trustData;
 let myTrust = [];
 
-let latestData;
-
 let filterYear = 2016;
 
 // Box definieren, in der euer Diagramm aufbauen wollt
@@ -145,30 +143,30 @@ function draw() {
 		let countryData = result[country];
 
 		// Finde den Datensatz für das Jahr 2004 für das Land
-		let data2004 = countryData.find(
+		let latestData = countryData.find(
 			(data) => data.year === 2000 + mySlider.myValue
 		);
-		if (data2004) {
+		if (latestData) {
 			// Berechne die Größe des Kreises basierend auf dem Wert
-			let size = data2004.Score * sizeAll * 1.9;
+			let size = latestData.Score * sizeAll * 1.9;
 
 			// Größe von dem Trust
-			let sizeTrust = data2004.trustinPolicePercentage * sizeAll;
+			let sizeTrust = latestData.trustinPolicePercentage * sizeAll;
 
 			// Position der Kreise x
-			let posKreisx = data2004.Score;
+			let posKreisx = latestData.Score;
 
 			// Position der Kreise y
-			let posKreisy = data2004.trustinPolicePercentage;
+			let posKreisy = latestData.trustinPolicePercentage;
 
 			//For-Schleife für den größten Score von Crime
-			for (let t = 0; scoreMax < data2004.Score; t++) {
+			for (let t = 0; scoreMax < latestData.Score; t++) {
 				scoreMax = scoreMax + 1;
 			}
 
 			// Mappen der %
 			posKreisy = map(
-				data2004.trustinPolicePercentage,
+				latestData.trustinPolicePercentage,
 				100,
 				0,
 				border,
@@ -177,7 +175,7 @@ function draw() {
 
 			// Mappen der Score
 			posKreisx = map(
-				data2004.Score,
+				latestData.Score,
 				scoreMax,
 				0,
 				border,
@@ -187,22 +185,22 @@ function draw() {
 			push();
 			noStroke();
 
-			if (data2004.Subregion == "Northern Europe") {
+			if (latestData.Subregion == "Northern Europe") {
 				fill(80, 120, 170);
 				ellipse(posKreisx, posKreisy, size, size);
 			}
 
-			if (data2004.Subregion == "Eastern Europe") {
+			if (latestData.Subregion == "Eastern Europe") {
 				fill(130, 30, 100);
 				ellipse(posKreisx, posKreisy, size, size);
 			}
 
-			if (data2004.Subregion == "Southern Europe") {
+			if (latestData.Subregion == "Southern Europe") {
 				fill(255, 170, 35);
 				ellipse(posKreisx, posKreisy, size, size);
 			}
 
-			if (data2004.Subregion == "Western Europe") {
+			if (latestData.Subregion == "Western Europe") {
 				fill(50, 110, 110);
 				ellipse(posKreisx, posKreisy, size, size);
 			}
