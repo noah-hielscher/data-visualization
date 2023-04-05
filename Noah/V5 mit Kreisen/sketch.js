@@ -153,16 +153,42 @@ function draw() {
 
 		// Mappen der Score
 		posKreisx = map(latestData.Score, scoreMax, 0, border, 1680 - border);
+		push();
+		noStroke();
+		
+		if (latestData.Subregion == "Northern Europe") {
+			fill(80, 120, 170);		
+			ellipse(posKreisx, posKreisy, size, size);
+		}
 
-		// Zeichne den Kreis
+
+		if (latestData.Subregion == "Eastern Europe") {
+			fill(130, 30, 100);		
+			ellipse(posKreisx, posKreisy, size, size);
+		}
+
+		if (latestData.Subregion == "Southern Europe") {
+			fill(255, 170, 35);		
+			ellipse(posKreisx, posKreisy, size, size);
+		}
+
+		if (latestData.Subregion == "Western Europe") {
+			fill(50, 110, 110);		
+			ellipse(posKreisx, posKreisy, size, size);
+			console.log("Western Europe")
+		}
+		push();
+/* 		// Zeichne den Kreis
 		noStroke();
 		fill(255, 0, 0);
-		ellipse(posKreisx, posKreisy, size, size);
+		ellipse(posKreisx, posKreisy, size, size); */
 
 		// Zeichne den Kreis
+		push();
 		stroke("black");
 		noFill();
 		ellipse(posKreisx, posKreisy, sizeTrust, sizeTrust);
+		pop();
 	}
 
 	//100%
