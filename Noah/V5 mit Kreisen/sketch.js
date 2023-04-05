@@ -1,5 +1,5 @@
 /*
-Marsha, Noah, Lukas
+Marsha Tasch, Lukas Speidel, Noah Hielscher
 */
 
 // Multiplikator für die Größe
@@ -31,7 +31,7 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(1680, 1050);
+	createCanvas(windowWidth, windowHeight);
 
 	let i = 0;
 
@@ -116,7 +116,7 @@ function exists(value, arr) {
 }
 
 function draw() {
-	background("white");
+	background("black");
 
 	// Schleife über jedes Land im "result" Objekt
 	for (let country in result) {
@@ -148,44 +148,49 @@ function draw() {
 			100,
 			0,
 			border,
-			1050 - border
+			windowHeight - border
 		);
 
 		// Mappen der Score
-		posKreisx = map(latestData.Score, scoreMax, 0, border, 1680 - border);
+		posKreisx = map(
+			latestData.Score,
+			scoreMax,
+			0,
+			border,
+			windowWidth - border
+		);
 		push();
 		noStroke();
-		
+
 		if (latestData.Subregion == "Northern Europe") {
-			fill(80, 120, 170);		
+			fill(80, 120, 170);
 			ellipse(posKreisx, posKreisy, size, size);
 		}
 
-
 		if (latestData.Subregion == "Eastern Europe") {
-			fill(130, 30, 100);		
+			fill(130, 30, 100);
 			ellipse(posKreisx, posKreisy, size, size);
 		}
 
 		if (latestData.Subregion == "Southern Europe") {
-			fill(255, 170, 35);		
+			fill(255, 170, 35);
 			ellipse(posKreisx, posKreisy, size, size);
 		}
 
 		if (latestData.Subregion == "Western Europe") {
-			fill(50, 110, 110);		
+			fill(50, 110, 110);
 			ellipse(posKreisx, posKreisy, size, size);
-			console.log("Western Europe")
+			console.log("Western Europe");
 		}
 		push();
-/* 		// Zeichne den Kreis
+		/* 		// Zeichne den Kreis
 		noStroke();
 		fill(255, 0, 0);
 		ellipse(posKreisx, posKreisy, size, size); */
 
 		// Zeichne den Kreis
 		push();
-		stroke("black");
+		stroke("white");
 		noFill();
 		ellipse(posKreisx, posKreisy, sizeTrust, sizeTrust);
 		pop();
@@ -223,11 +228,11 @@ function draw() {
 	text("wenig", 1680 - 200, 1050 / 2);
 	pop();
 
-	//FrameRate
+	//Erstellt von
 	push();
 	noStroke();
 	fill(200);
 	textSize(12);
-	text("frameRate:   " + Math.round(frameRate()), 10, height - 5);
+	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 10, height - 5);
 	pop();
 }
