@@ -186,10 +186,6 @@ function draw() {
 			push();
 			noStroke();
 
-			if (latestData.year === 2006) {
-				console.log("Hallo");
-			}
-
 			if (latestData.Subregion == "Northern Europe") {
 				fill(80, 120, 170);
 				ellipse(posKreisx, posKreisy, size, size);
