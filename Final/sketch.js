@@ -25,6 +25,8 @@ let myTrust = [];
 
 let filterYear = 2016;
 
+let info;
+
 // Box definieren, in der euer Diagramm aufbauen wollt
 
 // ..._______________...
@@ -126,6 +128,8 @@ function setup() {
 			}
 		}
 	}
+
+	this.info = new Info(trustData, crimeData, border, scoreMax, mySlider, sizeAll);
 }
 
 function exists(value, arr) {
@@ -231,6 +235,8 @@ function draw() {
 	textSize(100);
 	text(2000 + mySlider.myValue, 600, 400);
 	pop();
+
+	this.info.addText();
 }
 
 //für Slider

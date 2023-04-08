@@ -132,6 +132,7 @@ function exists(value, arr) {
 	return arr.some((data) => data.year === value);
 }
 
+
 function draw() {
 	background("black");
 
@@ -214,23 +215,6 @@ function draw() {
 			pop();
 		}
 	}
-
-	//Erstellt von
-	push();
-	noStroke();
-	fill(200);
-	textSize(16);
-	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 200, height - 5);
-	pop();
-	image(img, 100, height - 600);
-
-	//Jahr Anzeige
-	push();
-	noStroke();
-	fill("white");
-	textSize(100);
-	text(2000 + mySlider.myValue, 600, 400);
-	pop();
 }
 
 //für Slider
@@ -244,4 +228,19 @@ function mouseReleased() {
 
 function mouseDragged() {
 	mySlider.mouseDraggingMe();
+}
+
+//für Hover
+display () 
+{
+	this.estaEncima = mouseX > this.myX - this.mySize / 2 && mouseX < this.myX + this.mySize / 2 &&
+		mouseY > this.myY - this.mySize / 2 && mouseY < this.myY + this.mySize / 2;
+
+	stroke(0,0,100);
+	if (this.hover) strokeWeight (2);
+	else noStroke();
+
+	fill(this.myColor);
+	ellipse (this.myX, this.myY, this.mySize, this.mySize);
+	noStroke();
 }
