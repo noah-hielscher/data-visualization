@@ -95,9 +95,11 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 			this.draggingMe = true;
 			dif = this.posButtonX - mouseX;
 		}
+		return this.mouseOverMe;
 	};
 
 	this.mouseDraggingMe = function () {
+		const oldValue = this.myValue;
 		if (this.draggingMe) {
 			if (this.mouseOverMe) {
 				if (mouseX > this.myX && mouseX < this.myX + this.myWidth)
@@ -117,6 +119,7 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 					) * 2;
 			}
 		}
+		return oldValue !== this.myValue;
 	};
 
 	this.mouseReleasedMe = function () {

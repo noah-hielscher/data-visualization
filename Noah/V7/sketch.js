@@ -18,15 +18,12 @@ let scoreMax = 0;
 let crimeData;
 let myCrime = [];
 let result = {};
-this.filteredByYear = [];
 
 //Datenbank Trust0
 let trustData;
 let myTrust = [];
 
 let filterYear = 2016;
-
-let info;
 
 // Box definieren, in der euer Diagramm aufbauen wollt
 
@@ -40,7 +37,6 @@ function preload() {
 }
 
 function setup() {
-	this.info = new Info(trustData, crimeData, border, mySlider, sizeAll);
 	createCanvas(windowWidth, windowHeight);
 
 	//Slider
@@ -85,19 +81,6 @@ function setup() {
 			result[country] = [];
 		}
 
-		let score = 0;
-		const crimes = crimeData.rows
-            .map(crimeDataRow => crimeDataRow.obj)
-            .filter(crimeDataRowObj =>
-                crimeDataRowObj["Country"] === country
-                && crimeDataRowObj["Year"] === year
-            );
-
-        crimes.forEach(crimeDataRowObj => {
-                const curScore = crimeDataRowObj["Score"];
-                score += Number.parseFloat(curScore);
-            });
-
 		result[country].push({
 			year: +year,
 			trustinPoliceScore: !trustinPoliceScore
@@ -106,25 +89,56 @@ function setup() {
 			trustinPolicePercentage: !trustinPolicePercentage
 				? null
 				: +trustinPolicePercentage,
-			Score: score,
-			Subregion: crimes && crimes[0] ? crimes[0].Subregion : "",
 		}); // parseInt(row.year)
 	}
 
-	this.drawCircles();
+	// Gehe crime durch
+	// Wenn in result das Land und Jahr passt
+	// dann füge sämtliche Attribute ein
+
+	for (let i = 0; i < crimeData.rows.length; i++) {
+		// console.log(crimeData.rows[i]);
+
+		let row = crimeData.rows[i];
+		let country = row.obj["Country"],
+			year = +row.obj["Year"];
+
+		// Land
+		if (result[country]) {
+			if (exists(year, result[country])) {
+				// 1. Greife auf die andere Datenbank zu
+				// 2. Füge die restlichen Spalten ein
+
+				// result[country] -> Array aus Objekten
+				// obj => {year: <number>, ...}
+				let dataset = result[country].find((obj) => obj.year === year);
+
+				//"Deep copy" unserer Spalten aus dem zweiten Datensatz für das Land und Jahr
+				const obj = { ...crimeData.rows[i].obj };
+
+				// lösche die Spaltenwerte, damit es keine Überlappungen gibt
+				delete obj["Country"];
+				delete obj["Year"];
+				obj["Score"] = +obj["Score"];
+
+				// "Merge" den neuen mit dem alten Datensatz zusammen
+				Object.assign(dataset, obj);
+			}
+		}
+	}
 }
 
 function exists(value, arr) {
 	return arr.some((data) => data.year === value);
 }
 
+
 function draw() {
+	background("black");
+
 	//Slider wird gemalt
 	mySlider.render();
-}
 
-function drawCircles() {
-	background("black");
 	// Schleife über jedes Land im "result" Objekt
 	for (let country in result) {
 		let countryData = result[country];
@@ -133,10 +147,9 @@ function drawCircles() {
 		let latestData = countryData.find(
 			(data) => data.year === 2000 + mySlider.myValue
 		);
-
 		if (latestData) {
 			// Berechne die Größe des Kreises basierend auf dem Wert
-			let size = latestData.Score;
+			let size = latestData.Score * sizeAll * 1.9;
 
 			// Größe von dem Trust
 			let sizeTrust = latestData.trustinPolicePercentage * sizeAll;
@@ -202,41 +215,11 @@ function drawCircles() {
 			pop();
 		}
 	}
-	//hier irgendwo nach Subregionen filtern
-
-	//Jahr Anzeige
-	push();
-	noStroke();
-	fill("white");
-	textSize(100);
-	text(2000 + mySlider.myValue, 600, 400);
-	pop();
-
-	//Erstellt von
-	push();
-	noStroke();
-	fill(200);
-	textSize(16);
-	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 200, height - 5);
-	pop();
-	image(img, 100, height - 600);
-}
-
-function findYearData() {
-	this.filteredByYear = {};
-	for( let country in result) {
-		const filtered = result[country].filter(data => data.year === 2000 + mySlider.myValue);
-		this.filteredByYear[country] = filtered;
-	}
 }
 
 //für Slider
 function mousePressed() {
-	const clickedOnSlider = mySlider.mouseClickMe();
-	if(!clickedOnSlider) {
-		this.info.addText();
-	}
-	console.log("clicked!");
+	mySlider.mouseClickMe();
 }
 
 function mouseReleased() {
@@ -244,9 +227,20 @@ function mouseReleased() {
 }
 
 function mouseDragged() {
-	const changed = mySlider.mouseDraggingMe();
-	if (changed) {
-		this.drawCircles();
-	}
-	console.log("dragged!");
+	mySlider.mouseDraggingMe();
+}
+
+//für Hover
+display () 
+{
+	this.estaEncima = mouseX > this.myX - this.mySize / 2 && mouseX < this.myX + this.mySize / 2 &&
+		mouseY > this.myY - this.mySize / 2 && mouseY < this.myY + this.mySize / 2;
+
+	stroke(0,0,100);
+	if (this.hover) strokeWeight (2);
+	else noStroke();
+
+	fill(this.myColor);
+	ellipse (this.myX, this.myY, this.mySize, this.mySize);
+	noStroke();
 }
