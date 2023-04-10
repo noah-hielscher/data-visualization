@@ -87,16 +87,17 @@ function setup() {
 
 		let score = 0;
 		const crimes = crimeData.rows
-            .map(crimeDataRow => crimeDataRow.obj)
-            .filter(crimeDataRowObj =>
-                crimeDataRowObj["Country"] === country
-                && crimeDataRowObj["Year"] === year
-            );
+			.map((crimeDataRow) => crimeDataRow.obj)
+			.filter(
+				(crimeDataRowObj) =>
+					crimeDataRowObj["Country"] === country &&
+					crimeDataRowObj["Year"] === year
+			);
 
-        crimes.forEach(crimeDataRowObj => {
-                const curScore = crimeDataRowObj["Score"];
-                score += Number.parseFloat(curScore);
-            });
+		crimes.forEach((crimeDataRowObj) => {
+			const curScore = crimeDataRowObj["Score"];
+			score += Number.parseFloat(curScore);
+		});
 
 		result[country].push({
 			year: +year,
@@ -224,8 +225,10 @@ function drawCircles() {
 
 function findYearData() {
 	this.filteredByYear = {};
-	for( let country in result) {
-		const filtered = result[country].filter(data => data.year === 2000 + mySlider.myValue);
+	for (let country in result) {
+		const filtered = result[country].filter(
+			(data) => data.year === 2000 + mySlider.myValue
+		);
 		this.filteredByYear[country] = filtered;
 	}
 }
@@ -233,10 +236,10 @@ function findYearData() {
 //für Slider
 function mousePressed() {
 	const clickedOnSlider = mySlider.mouseClickMe();
-	if(!clickedOnSlider) {
+	if (!clickedOnSlider) {
 		this.info.addText();
 	}
-	console.log("clicked!");
+	//console.log("clicked!");
 }
 
 function mouseReleased() {
@@ -248,5 +251,5 @@ function mouseDragged() {
 	if (changed) {
 		this.drawCircles();
 	}
-	console.log("dragged!");
+	//console.log("dragged!");
 }
