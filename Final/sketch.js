@@ -266,7 +266,6 @@ function drawCircles() {
 	}
 	//hier irgendwo nach Subregionen filtern
 
-<<<<<<< Updated upstream
 	//Jahr Anzeige
 	push();
 	noStroke();
@@ -274,8 +273,6 @@ function drawCircles() {
 	textSize(35);
 	text(2000 + mySlider.myValue, width - 300, height - 120);
 	pop();
-=======
->>>>>>> Stashed changes
 
 }
 
