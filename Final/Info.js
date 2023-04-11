@@ -92,10 +92,10 @@ class Info {
 			return;
 		}
 		fill(globalBgColor);
-		rect(windowWidth - 500, 220, 600, 250, 30);
+		rect(windowWidth - 500, 80, 600, 250, 30);
 		fill("white");
 		textSize(20);
-		text(circleData.trust["Countries"], windowWidth - 450 , 300);
+		text(circleData.trust["Countries"], windowWidth - 450 , 160);
 		text(
 			"Trust in police: " +
 				circleData.trust[
@@ -103,13 +103,13 @@ class Info {
 				] +
 				"%",
 			windowWidth - 450,
-            320
+            180
 		);
 
 		let offset = 40;
 		const crimes = circleData.crimes;
 		for (let category in crimes) {
-			text(category + ": " + crimes[category], windowWidth - 450, 300 + offset);
+			text(category + ": " + crimes[category], windowWidth - 450, 160 + offset);
 			offset += 20;
 		}
 	}
