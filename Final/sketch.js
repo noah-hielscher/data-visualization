@@ -49,7 +49,6 @@ function setup() {
 
 	textFont(openSans);
 
-
 	//Slider
 	mySlider = new Slider(
 		windowWidth - 500,
@@ -120,7 +119,6 @@ function setup() {
 	}
 
 	this.drawCircles();
-
 }
 
 function exists(value, arr) {
@@ -137,36 +135,40 @@ function draw() {
 	rectMode(CENTER);
 	fill(106);
 
-	rect(windowWidth / 2, border, 600, 150, 30);
-	rect(windowWidth / 2, windowHeight , 600, 150, 30);
+	//Straftaten
+	rect(windowWidth / 2, border - 140, 600, 150, 30);
+	rect(windowWidth / 2, windowHeight, 600, 150, 30);
 
 	//Straftaten
 	rect(0, windowHeight / 2, 450, 120, 30);
 	rect(windowWidth, windowHeight / 2, 450, 120, 30);
-	
+
 	fill("white");
 	textSize(30);
 	textAlign(CENTER);
-	text("100% Trust in Policework", windowWidth / 2, border + 50);
+	text("100% Trust in Policework", windowWidth / 2, border - 90);
 	text("0% Trust in Policework", windowWidth / 2, windowHeight - 25);
 	textAlign(LEFT);
-	text("High amount \nof crimes", 25, windowHeight / 2 -10);
-	text("Low amount \nof crimes", windowWidth - 195, windowHeight / 2 -10);
+	text("High amount \nof crimes", 25, windowHeight / 2 - 10);
+	text("Low amount \nof crimes", windowWidth - 195, windowHeight / 2 - 10);
 
-	image(countryColors, 25, windowHeight - 290,)
+	image(countryColors, 25, windowHeight - 290);
 	pop();
 
 	//Überschrift
 	push();
-	fill(67)
-	rectMode(CORNERS)
-	rect(0,0,windowWidth, border)
-	textSize(75);
+	fill(67);
+	rectMode(CORNERS);
+	rect(0, 0, windowWidth, border - 140);
+	textSize(40);
 	textAlign(LEFT);
 	fill("white");
-	text("Is there a correlation between the number of criminal offenses \nand the trust of the population in police work?", 25, 100);
+	text(
+		"Is there a correlation between the number of criminal offenses and the trust of the population in police work?",
+		23,
+		68
+	);
 	pop();
-
 
 	//Jahr Anzeige
 	push();
@@ -273,7 +275,6 @@ function drawCircles() {
 	textSize(35);
 	text(2000 + mySlider.myValue, width - 300, height - 120);
 	pop();
-
 }
 
 //rect(windowWidth / 2, 70, 600, 200, 30);
