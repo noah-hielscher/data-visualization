@@ -1,3 +1,7 @@
+/*
+Marsha Tasch, Lukas Speidel, Noah Hielscher
+*/
+
 class Info {
 	constructor(trustData, crimeData, border, slider, sizeAll) {
 		this.trustData = trustData;

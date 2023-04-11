@@ -1,3 +1,7 @@
+/*
+Marsha Tasch, Lukas Speidel, Noah Hielscher
+*/
+
 function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 	this.myX = _x;
 	this.myY = _y;
