@@ -30,7 +30,11 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 			mouseX > this.posButtonX - this.myHeight / 2 &&
 			mouseX < this.posButtonX + this.myHeight / 2;
 
-		fill(255, 255, 255, 150);
+		noStroke();
+		fill(globalBgColor);
+		rect(this.myX, this.myY, this.myWidth, this.myHeight, 8);
+
+		fill("255, 255, 255, 150");
 		stroke(255, 255, 155);
 		strokeWeight(2);
 
@@ -79,10 +83,6 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 			this.myX + linex + linexSpace * 5,
 			this.myY + this.myHeight + 1
 		);
-
-		noStroke();
-		fill(80, 80, 80, 90);
-		rect(this.myX, this.myY, this.myWidth, this.myHeight, 8);
 
 		// button
 		fill(255, 255, 255, 50);

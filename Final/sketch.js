@@ -2,6 +2,9 @@
 Marsha Tasch, Lukas Speidel, Noah Hielscher
 */
 
+//Golbal Color
+globalBgColor = "grey";
+
 //Slider
 let mySlider;
 
