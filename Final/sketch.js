@@ -12,7 +12,7 @@ let mySlider;
 let sizeAll = 2;
 
 //Rand
-let border = 100;
+let border = 250;
 
 // Let für For-Schleife für den größten Score von Crime
 let scoreMax = 0;
@@ -39,12 +39,16 @@ let info;
 function preload() {
 	trustData = loadTable("data/trust.csv", "csv", "header");
 	crimeData = loadTable("data/Crime.csv", "csv", "header");
-	img = loadImage("data/crime_and_trust_graph.png");
+	countryColors = loadImage("images/CountryColorsDescription.png");
+	openSans = loadFont("font/OpenSans-Regular.ttf");
 }
 
 function setup() {
 	this.info = new Info(trustData, crimeData, border, mySlider, sizeAll);
 	createCanvas(windowWidth, windowHeight);
+
+	textFont(openSans);
+
 
 	//Slider
 	mySlider = new Slider(
@@ -116,6 +120,7 @@ function setup() {
 	}
 
 	this.drawCircles();
+
 }
 
 function exists(value, arr) {
@@ -125,6 +130,59 @@ function exists(value, arr) {
 function draw() {
 	//Slider wird gemalt
 	mySlider.render();
+
+	//Beschriftung der Achsen
+	//% Vertrauen
+	push();
+	rectMode(CENTER);
+	fill(106);
+
+	rect(windowWidth / 2, border, 600, 150, 30);
+	rect(windowWidth / 2, windowHeight , 600, 150, 30);
+
+	//Straftaten
+	rect(0, windowHeight / 2, 450, 120, 30);
+	rect(windowWidth, windowHeight / 2, 450, 120, 30);
+	
+	fill("white");
+	textSize(30);
+	textAlign(CENTER);
+	text("100% Trust in Policework", windowWidth / 2, border + 50);
+	text("0% Trust in Policework", windowWidth / 2, windowHeight - 25);
+	textAlign(LEFT);
+	text("High amount \nof crimes", 25, windowHeight / 2 -10);
+	text("Low amount \nof crimes", windowWidth - 195, windowHeight / 2 -10);
+
+	image(countryColors, 25, windowHeight - 290,)
+	pop();
+
+	//Überschrift
+	push();
+	fill(67)
+	rectMode(CORNERS)
+	rect(0,0,windowWidth, border)
+	textSize(75);
+	textAlign(LEFT);
+	fill("white");
+	text("Is there a correlation between the number of criminal offenses \nand the trust of the population in police work?", 25, 100);
+	pop();
+
+
+	//Jahr Anzeige
+	push();
+	noStroke();
+	fill("white");
+	textSize(100);
+	text(2000 + mySlider.myValue, 600, 400);
+	pop();
+
+	//Erstellt von
+	push();
+	noStroke();
+	fill(200);
+	textSize(16);
+	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 200, height - 5);
+	pop();
 }
 
 function drawCircles() {
@@ -208,6 +266,7 @@ function drawCircles() {
 	}
 	//hier irgendwo nach Subregionen filtern
 
+<<<<<<< Updated upstream
 	//Jahr Anzeige
 	push();
 	noStroke();
@@ -215,18 +274,12 @@ function drawCircles() {
 	textSize(35);
 	text(2000 + mySlider.myValue, width - 300, height - 120);
 	pop();
+=======
+>>>>>>> Stashed changes
 
-	//Erstellt von
-	push();
-	noStroke();
-	fill(200);
-	textSize(16);
-	text("Marsha Tasch, Lukas Speidel, Noah Hielscher", 200, height - 5);
-	pop();
-	image(img, 100, height - 600);
 }
 
-rect(windowWidth / 2, 70, 600, 200, 30);
+//rect(windowWidth / 2, 70, 600, 200, 30);
 
 function findYearData() {
 	this.filteredByYear = {};

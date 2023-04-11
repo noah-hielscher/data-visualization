@@ -57,7 +57,7 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 
 		noStroke();
 		fill(80, 80, 80, 90);
-		rect(this.myX, this.myY, this.myWidth, this.myHeight);
+		rect(this.myX, this.myY, this.myWidth, this.myHeight, 25);
 
 		// button
 		fill(255, 255, 255, 50);

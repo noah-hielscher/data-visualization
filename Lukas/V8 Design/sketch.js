@@ -216,6 +216,14 @@ function draw() {
 		mySlider.render();
 	}
 
+	//Zu klärende Frage / Problem
+	push();
+	noStroke();
+	fill(200);
+	textSize(80);
+	text("Besteht ein Zusammenhang zwischen der Anzahl der Straftaten \n und dem Vertrauen der Bevölkerung in die Polizeiarbeit?", width/2, 200);
+	pop();
+
 	//Erstellt von
 	push();
 	noStroke();
