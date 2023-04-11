@@ -170,14 +170,6 @@ function draw() {
 	);
 	pop();
 
-	//Jahr Anzeige
-	push();
-	noStroke();
-	fill("white");
-	textSize(100);
-	text(2000 + mySlider.myValue, 600, 400);
-	pop();
-
 	//Erstellt von
 	push();
 	noStroke();
