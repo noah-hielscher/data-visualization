@@ -2,9 +2,6 @@
 Marsha Tasch, Lukas Speidel, Noah Hielscher
 */
 
-//Golbal Color
-globalBgColor = "grey";
-
 //Slider
 let mySlider;
 
@@ -225,6 +222,9 @@ function drawCircles() {
 	pop();
 	image(img, 100, height - 600);
 }
+
+
+rect(windowWidth/2,70,600,200,30)
 
 function findYearData() {
 	this.filteredByYear = {};
