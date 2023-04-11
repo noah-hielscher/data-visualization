@@ -79,20 +79,26 @@ class Info {
 		return hovered;
 	}
 
-
-    addText() {
-        strokeWeight(2);
-        const circleData = this.searchHoveredCircleData();
-        if(!circleData) {
-            return;
-        }
-        fill("black");
-        rect(10,70,600,200,30)
-        fill("white");
-        textSize(20);
-        text(circleData.trust["Countries"], 160, 100);
-        text("Trust in police: " + circleData.trust["Percentage of people with trust in/Police (%)"] + "%", 160, 120);
-
+	addText() {
+		strokeWeight(2);
+		const circleData = this.searchHoveredCircleData();
+		if (!circleData) {
+			return;
+		}
+		fill(globalBgColor);
+		rect(10, 70, 600, 200, 30);
+		fill("white");
+		textSize(20);
+		text(circleData.trust["Countries"], 160, 100);
+		text(
+			"Trust in police: " +
+				circleData.trust[
+					"Percentage of people with trust in/Police (%)"
+				] +
+				"%",
+			160,
+			120
+		);
 
 		let offset = 40;
 		const crimes = circleData.crimes;
