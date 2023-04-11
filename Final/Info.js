@@ -77,7 +77,7 @@ class Info {
             return;
         }
         fill("black");
-        rect(0,70,600,200,30)
+        rect(10,70,600,200,30)
         fill("white");
         textSize(20);
         text(circleData.trust["Countries"], 160, 100);
