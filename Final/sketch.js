@@ -9,7 +9,7 @@ globalBgColor = "grey";
 let mySlider;
 
 // Multiplikator für die Größe
-let sizeAll = 2;
+let sizeAll = 3;
 
 //Rand
 let border = 250;
