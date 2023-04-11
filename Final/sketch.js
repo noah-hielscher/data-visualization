@@ -65,6 +65,7 @@ function setup() {
 	// Erstelle ein Objekt
 
 	/** @type {Array<{country: string; year: number}>} */
+
 	//Trust
 	let data = trustData.rows.map((row) => ({
 		country: row.obj["Countries"],
@@ -82,7 +83,7 @@ function setup() {
 
 	// {country: <Name>, year: <Jahr>}
 
-	//Trust
+	//Datenbank - vereinen
 	for (let row of data) {
 		let { country, year, trustinPoliceScore, trustinPolicePercentage } =
 			row;
