@@ -34,8 +34,8 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 		fill(globalBgColor);
 		rect(this.myX, this.myY, this.myWidth, this.myHeight, 8);
 
-		fill("255, 255, 255, 150");
-		stroke(255, 255, 155);
+		fill("white");
+		stroke("white");
 		strokeWeight(2);
 
 		//Skalen

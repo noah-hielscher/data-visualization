@@ -212,8 +212,8 @@ function drawCircles() {
 	push();
 	noStroke();
 	fill("white");
-	textSize(100);
-	text(2000 + mySlider.myValue, 600, 400);
+	textSize(35);
+	text(2000 + mySlider.myValue, width - 300, height - 120);
 	pop();
 
 	//Erstellt von
