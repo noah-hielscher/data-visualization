@@ -33,31 +33,56 @@ function Slider(_x, _y, _mW, _mH, _vMin, _vMax, _vIn, _myT) {
 		fill(255, 255, 255, 150);
 		stroke(255, 255, 155);
 		strokeWeight(2);
-		let primerCuarto = this.myWidth * 0.25;
-		let mitad = this.myWidth * 0.5;
-		let tercerCuarto = this.myWidth * 0.75;
+
+		//Skalen
+		let linex = this.myWidth - 340;
+		let linexSpace = 56;
+
 		line(
-			this.myX + primerCuarto,
+			this.myX + linex,
 			this.myY - 1,
-			this.myX + primerCuarto,
+			this.myX + linex,
 			this.myY + this.myHeight + 1
 		);
+
 		line(
-			this.myX + mitad,
+			this.myX + linex + linexSpace,
 			this.myY - 1,
-			this.myX + mitad,
+			this.myX + linex + linexSpace,
 			this.myY + this.myHeight + 1
 		);
+
 		line(
-			this.myX + tercerCuarto,
+			this.myX + linex + linexSpace * 2,
 			this.myY - 1,
-			this.myX + tercerCuarto,
+			this.myX + linex + linexSpace * 2,
+			this.myY + this.myHeight + 1
+		);
+
+		line(
+			this.myX + linex + linexSpace * 3,
+			this.myY - 1,
+			this.myX + linex + linexSpace * 3,
+			this.myY + this.myHeight + 1
+		);
+
+		line(
+			this.myX + linex + linexSpace * 4,
+			this.myY - 1,
+			this.myX + linex + linexSpace * 4,
+			this.myY + this.myHeight + 1
+		);
+
+		line(
+			this.myX + linex + linexSpace * 5,
+			this.myY - 1,
+			this.myX + linex + linexSpace * 5,
 			this.myY + this.myHeight + 1
 		);
 
 		noStroke();
 		fill(80, 80, 80, 90);
-		rect(this.myX, this.myY, this.myWidth, this.myHeight);
+		rect(this.myX, this.myY, this.myWidth, this.myHeight, 8);
 
 		// button
 		fill(255, 255, 255, 50);
