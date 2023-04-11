@@ -77,16 +77,16 @@ class Info {
             return;
         }
         fill("black");
-        rect(0,70,600,200)
+        rect(0,70,600,200,30)
         fill("white");
         textSize(20);
-        text(circleData.trust["Countries"], 100, 100);
+        text(circleData.trust["Countries"], 160, 100);
         text("Trust in police: " + circleData.trust["Percentage of people with trust in/Police (%)"] + "%", 160, 120);
 
         let offset = 40;
         const crimes = circleData.crimes;
         for(let category in crimes) {
-            text(category + ": " + crimes[category], 100, 100 + offset);
+            text(category + ": " + crimes[category], 200, 100 + offset);
             offset += 20;
         }
     }
