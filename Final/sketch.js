@@ -153,7 +153,15 @@ function draw() {
 	text("High amount \nof crimes", 25, windowHeight / 2 - 10);
 	text("Low amount \nof crimes", windowWidth - 195, windowHeight / 2 - 10);
 
-	image(countryColors, 25, windowHeight - 290);
+	push();
+	image(
+		countryColors,
+		12.5,
+		windowHeight - 270,
+		countryColors.width * 0.7,
+		countryColors.height * 0.7
+	);
+	pop();
 	pop();
 
 	//Überschrift
